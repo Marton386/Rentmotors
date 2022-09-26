@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
+    android:paddingTop="@dimen/gapHalfMedium"
+    android:paddingStart="@dimen/gapHalfMedium"
+    android:paddingEnd="@dimen/gapHalfMedium"
+    android:paddingBottom="@dimen/gapSmall">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:ellipsize="end"
+        android:layout_marginTop="@dimen/gapXSmall"
+        android:singleLine="false"
+        android:maxLines="2"
+        app:layout_constraintEnd_toStartOf="@id/tvPrice"
+        android:layout_marginEnd="@dimen/gapMedium"
+        tools:text="Детское кресло" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapXSmall"
+        android:textColor="?attr/color_text_extra"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:text="Детское кресло" />
+
+    <EditText
+        android:id="@+id/etAddress"
+        style="@style/Border"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapSmall"
+        android:hint="@string/enter_address"
+        android:maxLines="1"
+        android:padding="@dimen/gapSmall"
+        android:textColor="?attr/color_text_extra"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/gapMedium"
+        android:textSize="15sp"
+        android:textColor="@color/text_color"
+        app:layout_constraintTop_toTopOf="@id/tvTitle"
+        app:layout_constraintEnd_toStartOf="@id/tvAmount"
+        tools:text="300 руб" />
+
+    <View
+        android:id="@+id/iconSelected"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@drawable/ic_check_circle"
+        android:backgroundTint="@color/round_button_color"
+        app:layout_constraintTop_toTopOf="@id/tvAmount"
+        app:layout_constraintEnd_toEndOf="@id/tvAmount"
+        app:layout_constraintBottom_toBottomOf="@id/tvAmount"
+        app:layout_constraintStart_toStartOf="@id/tvAmount"/>
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        tools:text="0"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:textColor="?attr/colorOnPrimary"
+        app:layout_constraintTop_toTopOf="@id/tvPrice"
+        app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/green_circle"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="@color/gray" />
+            <padding android:left="@dimen/gapMedium" android:right="@dimen/gapMedium" />
+            <corners
+                android:radius="@dimen/gapHalfMedium"/>
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="@color/black" />
+            <padding android:left="@dimen/gapMedium" android:right="@dimen/gapMedium" />
+            <corners
+                android:radius="@dimen/gapHalfMedium"/>
+        </shape>
+    </item>
+
+</selector>

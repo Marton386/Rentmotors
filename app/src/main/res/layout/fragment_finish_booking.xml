@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tvBookingState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapXLarge"
+        android:layout_marginStart="@dimen/gapMedium"
+        android:layout_marginEnd="@dimen/gapMedium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/pick_up_info"/>
+
+    <TextView
+        android:id="@+id/tvTitlePickUpInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapLarge"
+        app:layout_constraintStart_toStartOf="@id/tvBookingState"
+        app:layout_constraintEnd_toEndOf="@id/tvBookingState"
+        app:layout_constraintTop_toBottomOf="@id/tvBookingState"
+        tools:text="@string/we_are_waiting_you"/>
+
+    <TextView
+        android:id="@+id/tvPickUpDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapXSmall"
+        android:textStyle="bold"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="@id/tvBookingState"
+        app:layout_constraintEnd_toEndOf="@id/tvBookingState"
+        app:layout_constraintTop_toBottomOf="@id/tvTitlePickUpInfo"
+        tools:text="10 декабря 2021, 10:00"/>
+
+    <TextView
+        android:id="@+id/tvPickUpStation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="@id/tvBookingState"
+        app:layout_constraintEnd_toEndOf="@id/tvBookingState"
+        app:layout_constraintTop_toBottomOf="@id/tvPickUpDate"
+        tools:text="Москва, ул. Фридриха-Энгельса, д. 3-5"/>
+
+    <TextView
+        android:id="@+id/tvTitleNumberReservation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapLarge"
+        app:layout_constraintStart_toStartOf="@id/tvBookingState"
+        app:layout_constraintEnd_toEndOf="@id/tvBookingState"
+        app:layout_constraintTop_toBottomOf="@id/tvPickUpStation"
+        android:text="@string/you_booking_number"/>
+
+    <TextView
+        android:id="@+id/tvNumberReservation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@id/tvBookingState"
+        app:layout_constraintEnd_toEndOf="@id/tvBookingState"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleNumberReservation"
+        tools:text="76543"/>
+
+    <TextView
+        android:id="@+id/tvInstructions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tvBookingState"
+        app:layout_constraintEnd_toEndOf="@id/tvBookingState"
+        app:layout_constraintTop_toBottomOf="@id/tvNumberReservation"
+        android:text="@string/pick_up_info"/>
+
+    <TextView
+        android:id="@+id/tvVoucherInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapLarge"
+        android:layout_marginBottom="@dimen/gapMedium"
+        app:layout_constraintBottom_toTopOf="@id/layoutAddToWallet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/voucher"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutAddToWallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btnFinish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/gapHalfMedium"
+        android:layout_marginBottom="@dimen/gapLarge"
+        style="@style/SaveToWalletButton"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imgSaveToWallet"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/wallet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvSaveToWallet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gapSmall"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/imgSaveToWallet"
+            app:layout_constraintBottom_toBottomOf="@id/imgSaveToWallet"
+            app:layout_constraintStart_toEndOf="@id/imgSaveToWallet"
+            android:text="@string/add_to_wallet"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="@dimen/gapXSmall"
+        app:layout_constraintBottom_toTopOf="@id/tvVoucherInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:indeterminateTint="?attr/color_text_extra"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnFinish"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/gapMedium"
+        android:layout_height="50dp"
+        android:text="@string/finish"
+        app:layout_constraintStart_toStartOf="@id/tvBookingState"
+        app:layout_constraintEnd_toEndOf="@id/tvBookingState"
+        android:layout_marginBottom="@dimen/gapMedium"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

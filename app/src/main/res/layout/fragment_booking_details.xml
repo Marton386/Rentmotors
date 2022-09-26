@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gapMedium"
+                android:layout_marginTop="@dimen/gapMedium"
+                android:layout_marginEnd="@dimen/gapMedium"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/border"
+                android:paddingBottom="@dimen/gapXSmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgCar"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/gapHalfMedium"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/placeholder_car"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvModelDescription" />
+
+                <TextView
+                    android:id="@+id/tvCarModel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapHalfMedium"
+                    android:layout_marginEnd="@dimen/gapHalfMedium"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Hyundai Solaris" />
+
+                <TextView
+                    android:id="@+id/tvModelDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/or_similar"
+                    android:textColor="?attr/color_text_extra"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvCarModel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCarModel" />
+
+                <TextView
+                    android:id="@+id/tvForDays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/gapLarge"
+                    android:textColor="?attr/color_text_extra"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvAllDayCost"
+                    app:layout_constraintStart_toStartOf="@id/tvAllDayCost"
+                    tools:text="за 3 дня" />
+
+                <TextView
+                    android:id="@+id/tvAllDayCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gapSmall"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/orange"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvAllDayCostCur"
+                    app:layout_constraintEnd_toStartOf="@id/tvAllDayCostCur"
+                    tools:text="5 700" />
+
+                <TextView
+                    android:id="@+id/tvAllDayCostCur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/gapSmall"
+                    tools:text="@string/rub"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/imgCar"
+                    app:layout_constraintEnd_toEndOf="@id/tvCarModel" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutCarExtraInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/gapHalfMedium"
+                    android:layout_marginTop="@dimen/gapHalfMedium"
+                    android:layout_marginEnd="@dimen/gapHalfMedium"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@id/tvCarModel"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAllDayCost"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tvCarClass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="22dp"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="EDAR" />
+
+                    <TextView
+                        android:id="@+id/tvFacilities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="12sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvPerDayCostDescription"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="АКПП, кондиционер" />
+
+                    <TextView
+                        android:id="@+id/tvPerDayCostDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/daily_tariff"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCarClass" />
+
+                    <TextView
+                        android:id="@+id/tvPerDayCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapXSmall"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvPerDayCostDescription"
+                        app:layout_constraintStart_toEndOf="@id/tvPerDayCostDescription"
+                        tools:text="1 900 руб" />
+
+                    <TextView
+                        android:id="@+id/tvMileageLimitDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/limited_mileage"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvPerDayCost" />
+
+                    <TextView
+                        android:id="@+id/tvMileageLimit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapXSmall"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvMileageLimitDescription"
+                        app:layout_constraintStart_toEndOf="@id/tvMileageLimitDescription"
+                        tools:text="750 км" />
+
+                    <TextView
+                        android:id="@+id/tvDepositDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/deposit_caps"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvMileageLimit" />
+
+                    <TextView
+                        android:id="@+id/tvDeposit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapXSmall"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvDepositDescription"
+                        app:layout_constraintStart_toEndOf="@id/tvDepositDescription"
+                        tools:text="750 км" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutFeatures"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="@id/tvDeposit"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ic_car_door"
+                            app:tint="@color/gray_light" />
+
+                        <TextView
+                            android:id="@+id/tvAmountDoors"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?attr/color_text_extra"
+                            android:textSize="13sp"
+                            tools:text="4" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="5dp"
+                            android:src="@drawable/ic_person"
+                            app:tint="@color/gray_light" />
+
+                        <TextView
+                            android:id="@+id/tvAmountPlaces"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?attr/color_text_extra"
+                            android:textSize="13sp"
+                            tools:text="4" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="5dp"
+                            android:src="@drawable/ic_luggage"
+                            app:tint="@color/gray_light" />
+
+                        <TextView
+                            android:id="@+id/tvAmountLuggage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?attr/color_text_extra"
+                            android:textSize="13sp"
+                            tools:text="3" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="5dp"
+                            android:src="@drawable/ic_work"
+                            app:tint="@color/gray_light" />
+
+                        <TextView
+                            android:id="@+id/tvAmountBags"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?attr/color_text_extra"
+                            android:textSize="13sp"
+                            tools:text="5" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageButton
+                    android:id="@+id/ibMoreCarInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gapXSmall"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/gapSmall"
+                    android:src="@drawable/ic_arrow_show_more"
+                    app:tint="?attr/color_text_primary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layoutCarExtraInfo" />
+
+                <ImageButton
+                    android:id="@+id/ibHideCarInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapXSmall"
+                    android:layout_marginEnd="@dimen/gapXSmall"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/gapSmall"
+                    android:src="@drawable/ic_arrow_hide"
+                    app:tint="?attr/color_text_primary"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layoutCarExtraInfo" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutLocations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gapMedium"
+                android:layout_marginTop="@dimen/gapMedium"
+                android:layout_marginEnd="@dimen/gapMedium"
+                android:layout_marginBottom="@dimen/gapMedium"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/border"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutCar">
+
+                <TextView
+                    android:id="@+id/tvPickUpAndDropOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/gapHalfMedium"
+                    android:layout_marginTop="@dimen/gapHalfMedium"
+                    android:text="@string/pickup_and_dropoff"
+                    app:layout_constraintBottom_toTopOf="@id/layoutPickUpDropOffInfo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_goneMarginBottom="@dimen/gapHalfMedium" />
+
+                <ImageButton
+                    android:id="@+id/ibMorePickUpDropOffInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gapXSmall"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/gapSmall"
+                    android:src="@drawable/ic_arrow_show_more"
+                    app:tint="?attr/color_text_primary"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvPickUpAndDropOff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvPickUpAndDropOff" />
+
+                <ImageButton
+                    android:id="@+id/ibHidePickUpDropOffInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/gapSmall"
+                    android:src="@drawable/ic_arrow_hide"
+                    app:tint="?attr/color_text_primary"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="@+id/ibMorePickUpDropOffInfo"
+                    app:layout_constraintBottom_toBottomOf="@+id/ibMorePickUpDropOffInfo"
+                    app:layout_constraintStart_toStartOf="@+id/ibMorePickUpDropOffInfo"
+                    app:layout_constraintEnd_toEndOf="@+id/ibMorePickUpDropOffInfo" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutPickUpDropOffInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/gapSmall"
+                    android:visibility="gone"
+                    android:animateLayoutChanges="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPickUpAndDropOff"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/gapHalfMedium"
+                    tools:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvPickUpLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapMedium"
+                        tools:text="Москва, Бауманская"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPickUpDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/gapSmall"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        tools:text="01 января 2021"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/tvPickUpTime"
+                        app:layout_constraintStart_toStartOf="@id/tvPickUpLocation"
+                        app:layout_constraintTop_toBottomOf="@id/tvPickUpLocation" />
+
+                    <TextView
+                        android:id="@+id/tvPickUpTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/gapMedium"
+                        tools:text="10:00"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvPickUpDate"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPickUpDayOfWeek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/gapXSmall"
+                        tools:text="Пятница"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@id/tvPickUpDate"
+                        app:layout_constraintTop_toBottomOf="@id/tvPickUpDate" />
+
+                    <View
+                        android:id="@+id/viewLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/gapSmall"
+                        android:layout_marginTop="@dimen/gapMedium"
+                        android:layout_marginEnd="@dimen/gapSmall"
+                        android:layout_marginBottom="@dimen/gapMedium"
+                        android:background="@drawable/border"
+                        app:layout_constraintTop_toBottomOf="@id/tvPickUpDayOfWeek" />
+
+                    <ImageView
+                        android:id="@+id/imgArrow"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_arrow_down"
+                        app:layout_constraintBottom_toBottomOf="@id/viewLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/viewLine" />
+
+                    <TextView
+                        android:id="@+id/tvDropOffLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapMedium"
+                        android:layout_marginTop="@dimen/gapSmall"
+                        tools:text="Москва, Бауманская"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/imgArrow" />
+
+                    <TextView
+                        android:id="@+id/tvDropOffDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/gapSmall"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        tools:text="05 января 2021"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/tvDropOffTime"
+                        app:layout_constraintStart_toStartOf="@id/tvDropOffLocation"
+                        app:layout_constraintTop_toBottomOf="@id/tvDropOffLocation" />
+
+                    <TextView
+                        android:id="@+id/tvDropOffTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/gapMedium"
+                        tools:text="10:00"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvDropOffDate"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvDropOffDayOfWeek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/gapXSmall"
+                        tools:text="Вторник"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@id/tvPickUpDate"
+                        app:layout_constraintTop_toBottomOf="@id/tvDropOffDate" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutExtras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/gapMedium"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/border"
+                app:layout_constraintStart_toStartOf="@id/layoutCar"
+                app:layout_constraintTop_toBottomOf="@id/layoutLocations">
+
+                <TextView
+                    android:id="@+id/tvExtras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/gapHalfMedium"
+                    android:layout_marginTop="@dimen/gapHalfMedium"
+                    android:text="@string/additional_options"
+                    app:layout_constraintBottom_toTopOf="@id/scrollView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_goneMarginBottom="@dimen/gapHalfMedium" />
+
+                <ImageButton
+                    android:id="@+id/ibMoreExtrasInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gapXSmall"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/gapSmall"
+                    android:src="@drawable/ic_arrow_show_more"
+                    app:tint="?attr/color_text_primary"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvExtras"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvExtras" />
+
+                <ImageButton
+                    android:id="@+id/ibHideExtrasInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/gapSmall"
+                    android:src="@drawable/ic_arrow_hide"
+                    app:tint="?attr/color_text_primary"
+                    app:layout_constraintTop_toTopOf="@+id/ibMoreExtrasInfo"
+                    app:layout_constraintBottom_toBottomOf="@+id/ibMoreExtrasInfo"
+                    app:layout_constraintStart_toStartOf="@+id/ibMoreExtrasInfo"
+                    app:layout_constraintEnd_toEndOf="@+id/ibMoreExtrasInfo" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/scrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvExtras"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:visibility="gone">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvExtras"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/item_extra"
+                        android:paddingBottom="@dimen/gapHalfMedium"/>
+
+                </androidx.core.widget.NestedScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutFees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gapMedium"
+                android:layout_marginTop="@dimen/gapMedium"
+                android:layout_marginEnd="@dimen/gapMedium"
+                android:layout_marginBottom="@dimen/gapMedium"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/border"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutExtras">
+
+                <TextView
+                    android:id="@+id/tvFees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/gapHalfMedium"
+                    android:layout_marginTop="@dimen/gapHalfMedium"
+                    android:text="@string/fees"
+                    app:layout_constraintBottom_toTopOf="@id/layoutFeesList"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_goneMarginBottom="@dimen/gapHalfMedium" />
+
+                <ImageButton
+                    android:id="@+id/ibMoreFeesInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gapXSmall"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/gapSmall"
+                    android:src="@drawable/ic_arrow_show_more"
+                    app:tint="?attr/color_text_primary"
+                    app:layout_constraintBottom_toBottomOf="@id/tvFees"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvFees" />
+
+                <ImageButton
+                    android:id="@+id/ibHideFeesInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/gapSmall"
+                    android:layout_marginBottom="@dimen/gapSmall"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/gapSmall"
+                    android:src="@drawable/ic_arrow_hide"
+                    app:tint="?attr/color_text_primary"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/tvFees"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvFees" />
+
+                <LinearLayout
+                    android:id="@+id/layoutFeesList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvFees"
+                    android:paddingBottom="@dimen/gapHalfMedium"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutTotalPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gapMedium"
+                android:layout_marginTop="@dimen/gapLarge"
+                android:layout_marginEnd="@dimen/gapMedium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutFees"
+                android:animateLayoutChanges="true"
+                app:layout_constraintVertical_bias="1">
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/total"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/orange"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tvTotal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="5 700" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnContinueBooking"
+                    style="@style/Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:layout_marginBottom="@dimen/gapMedium"
+                    android:text="@string/continue_booking"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTotal" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gapMedium"
+        android:layout_marginTop="@dimen/gapMedium"
+        android:layout_marginEnd="@dimen/gapLarge"
+        android:lines="2"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Москва,\nБауманская" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/gapSmall"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/ibMoreInfo"
+        app:layout_constraintTop_toTopOf="@id/tvName"
+        tools:text="+8 888 888 88 88" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapXSmall"
+        android:layout_marginBottom="@dimen/gapMedium"
+        android:textColor="?attr/color_text_extra"
+        android:textSize="14sp"
+        android:maxLines="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ibMoreInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/gapMedium"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        tools:text="Фридриха-Энгельса" />
+
+    <ImageButton
+        android:id="@+id/ibMoreInfo"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/gapMedium"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:padding="@dimen/gapXSmall"
+        android:src="@drawable/ic_arrow_forward"
+        app:tint="?attr/color_borders"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

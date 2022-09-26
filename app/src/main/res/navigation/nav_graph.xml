@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startBookingFragment">
+
+    <fragment
+        android:id="@+id/startBookingFragment"
+        android:name="com.anless.rentmotors.ui.startBooking.StartBookingFragment"
+        android:label="@string/booking"
+        tools:layout="@layout/fragment_start_booking">
+
+        <action
+            android:id="@+id/action_startBookingFragment_to_searchCarsFragment"
+            app:destination="@id/searchCarsFragment" />
+
+        <action
+            android:id="@+id/action_startBookingFragment_to_searchStationsFragment"
+            app:destination="@id/searchStationsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/stationsFragment"
+        android:name="com.anless.rentmotors.ui.stations.StationsFragment"
+        android:label="@string/rental_stations"
+        tools:layout="@layout/fragment_stations">
+
+        <action
+            android:id="@+id/action_stationsFragment_to_stationInfoFragment"
+            app:destination="@id/stationInfoFragment" />
+        <action
+            android:id="@+id/action_stationsFragment_to_stationsMapFragment"
+            app:destination="@id/stationsMapFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.anless.rentmotors.ui.chat.ChatFragment"
+        android:label="@string/chat"
+        tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.anless.rentmotors.ui.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/searchCarsFragment"
+        android:name="com.anless.rentmotors.ui.searchCars.SearchCarsFragment"
+        android:label="@string/choose_car"
+        tools:layout="@layout/fragment_search_cars">
+
+        <action
+            android:id="@+id/action_searchCarsFragment_to_bookingDetailsFragment"
+            app:destination="@id/bookingDetailsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchStationsFragment"
+        android:name="com.anless.rentmotors.ui.searchStations.SearchStationsFragment"
+        android:label="@string/booking"
+        tools:layout="@layout/fragment_search_station">
+
+        <argument
+            android:name="typeStation"
+            app:argType="integer" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookingDetailsFragment"
+        android:name="com.anless.rentmotors.ui.bookingDetails.BookingDetailsFragment"
+        android:label="@string/booking"
+        tools:layout="@layout/fragment_booking_details">
+        <action
+            android:id="@+id/action_bookingDetailsFragment_to_checkClientFragment"
+            app:destination="@id/checkClientFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.anless.rentmotors.ui.personalInfo.PersonalInfoFragment"
+        android:label="@string/personal_data"
+        tools:layout="@layout/fragment_personal_info" >
+        <action
+            android:id="@+id/action_personalInfoFragment_to_finishBookingFragment"
+            app:destination="@id/finishBookingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/stationInfoFragment"
+        android:name="com.anless.rentmotors.ui.stationInfo.StationInfoFragment"
+        android:label="@string/stations"
+        tools:layout="@layout/fragment_station_info">
+
+        <argument
+            android:name="idStation"
+            app:argType="integer" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/finishBookingFragment"
+        android:name="com.anless.rentmotors.ui.finishBooking.FinishBookingFragment"
+        android:label="@string/your_booking"
+        tools:layout="@layout/fragment_finish_booking"/>
+
+    <fragment
+        android:id="@+id/stationsMapFragment"
+        android:name="com.anless.rentmotors.ui.stationsMap.StationsMapFragment"
+        android:label="@string/rental_stations"
+        tools:layout="@layout/fragment_stations_map">
+        <action
+            android:id="@+id/action_stationsMapFragment_to_stationInfoFragment"
+            app:destination="@id/stationInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkClientFragment"
+        android:name="com.anless.rentmotors.ui.checkClient.CheckClientFragment"
+        android:label="@string/personal_data"
+        tools:layout="@layout/fragment_check_client">
+        <action
+            android:id="@+id/action_checkClientFragment_to_finishBookingFragment"
+            app:destination="@id/finishBookingFragment" />
+        <action
+            android:id="@+id/action_checkClientFragment_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment" />
+    </fragment>
+
+</navigation>

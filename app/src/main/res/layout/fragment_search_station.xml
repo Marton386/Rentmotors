@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true"
+    android:layout_marginTop="@dimen/gapMedium">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/gapMedium"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTypeLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/car_pickup_location"
+            android:textColor="?attr/color_text_extra"
+            android:layout_marginTop="@dimen/gapMedium"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/gapSmall"
+            android:padding="@dimen/gapXSmall"
+            android:animateLayoutChanges="true"
+            style="@style/Border">
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tint="?attr/color_borders"
+                android:layout_margin="@dimen/gapXSmall"
+                android:src="@drawable/ic_search"/>
+
+            <EditText
+                android:id="@+id/etLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/gapSmall"
+                android:hint="@string/enter_city_name"
+                android:background="@null"
+                android:layout_marginStart="@dimen/gapXSmall"
+                android:padding="@dimen/gapXSmall"
+                android:maxLines="1"
+                android:inputType="text"
+                android:textColorHint="?attr/color_borders" >
+                <requestFocus/>
+            </EditText>
+
+            <ImageView
+                android:id="@+id/imgCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tint="?attr/color_borders"
+                android:visibility="gone"
+                android:paddingStart="@dimen/gapSmall"
+                android:paddingTop="@dimen/gapXSmall"
+                android:paddingBottom="@dimen/gapXSmall"
+                android:paddingEnd="@dimen/gapSmall"
+                tools:visibility="visible"
+                android:src="@drawable/ic_cancel"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchStations"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/item_station_search"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

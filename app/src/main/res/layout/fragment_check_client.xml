@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.anless.rentmotors.ui.checkClient.CheckClientViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:padding="@dimen/gapMedium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/personal_information"
+                    android:textColor="?attr/color_text_extra"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:text="@string/last_name"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutLastName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    error="@{viewModel.lastNameError}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/EditTextThemeOverlay"
+                    app:placeholderTextColor="?attr/color_borders">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={viewModel.lastName}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:text="@string/first_name"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutFirstName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    error="@{viewModel.firstNameError}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/EditTextThemeOverlay"
+                    app:placeholderTextColor="?attr/color_borders">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFirstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={viewModel.firstName}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:text="@string/email"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    error="@{viewModel.emailError}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/EditTextThemeOverlay"
+                    app:placeholderTextColor="?attr/color_borders">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:text="@={viewModel.email}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:text="@string/flight_number"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/EditTextThemeOverlay"
+                    app:helperText="@string/if_you_flight_delayed"
+                    app:placeholderTextColor="?attr/color_borders">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFlightNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/optional"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={viewModel.numFlight}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:text="@string/special_wishes"
+                    android:textSize="15sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/EditTextThemeOverlay"
+                    app:placeholderTextColor="?attr/color_borders">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSpecialWishes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/optional"
+                        android:inputType="text"
+                        android:text="@={viewModel.comment}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cbAcceptTerms"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:checked="@={viewModel.acceptTerms}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvAccept"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/introdused_and_accept"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="@id/cbAcceptTerms"
+                        app:layout_constraintStart_toEndOf="@id/cbAcceptTerms"
+                        app:layout_constraintTop_toTopOf="@id/cbAcceptTerms" />
+
+                    <TextView
+                        android:id="@+id/tvRentTerms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rent_terms"
+                        android:textColor="?attr/color_text_link"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="@id/tvAccept"
+                        app:layout_constraintTop_toBottomOf="@id/tvAccept" />
+
+                    <TextView
+                        android:id="@+id/tvAnd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapXSmall"
+                        android:text="@string/and"
+                        android:textSize="15sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvRentTerms"
+                        app:layout_constraintStart_toEndOf="@id/tvRentTerms" />
+
+                    <TextView
+                        android:id="@+id/tvPrivacyPolicy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/privacy_policy"
+                        android:textColor="?attr/color_text_link"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="@id/tvRentTerms"
+                        app:layout_constraintTop_toBottomOf="@id/tvRentTerms" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ProgressBar
+                    android:id="@+id/pbLoading"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:indeterminateTint="?attr/color_text_extra" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNext"
+                    style="@style/Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:text="@string/next" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

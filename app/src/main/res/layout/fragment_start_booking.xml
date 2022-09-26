@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/gapMedium"
+                android:layout_weight="1"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:text="@string/car_pickup_location"
+                    android:textColor="?attr/color_text_extra"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:id="@+id/layoutPickUpLocation"
+                    style="@style/Border"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapSmall"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/gapSmall"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_search"
+                        app:tint="?attr/color_borders"
+                        android:contentDescription="@string/app_name" />
+
+                    <TextView
+                        android:id="@+id/tvPickUpLocation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapSmall"
+                        android:layout_marginEnd="@dimen/gapSmall"
+                        android:layout_weight="1"
+                        android:hint="@string/enter_city_name"
+                        android:textColorHint="?attr/color_borders" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutDropOffLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/car_dropOff_location"
+                        android:textColor="?attr/color_text_extra"
+                        android:textSize="13sp" />
+
+                    <LinearLayout
+                        style="@style/Border"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/gapSmall"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/gapSmall"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_search"
+                            app:tint="?attr/color_borders"
+                            android:contentDescription="@string/app_name"/>
+
+                        <TextView
+                            android:id="@+id/tvDropOffLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/gapSmall"
+                            android:layout_marginEnd="@dimen/gapSmall"
+                            android:hint="@string/enter_city_name"
+                            android:textColorHint="?attr/color_borders" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/swSameLocationDropOff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/return_in_the_same_place"
+                    android:textColor="?attr/color_text_primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapHalfLarge"
+                    android:text="@string/pickup_date"
+                    android:textColor="?attr/color_text_extra"
+                    android:textSize="13sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutPickUpDate"
+                    style="@style/Border"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapSmall"
+                    android:padding="@dimen/gapSmall">
+
+                    <TextView
+                        android:id="@+id/tvPickUpDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapXSmall"
+                        android:layout_marginTop="@dimen/gapMedium"
+                        android:layout_marginEnd="@dimen/gapSmall"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="23sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/tvPickUpTime"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="01 января 2021" />
+
+                    <TextView
+                        android:id="@+id/tvPickUpTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/gapXSmall"
+                        android:paddingTop="@dimen/gapMedium"
+                        android:paddingBottom="@dimen/gapMedium"
+                        android:paddingStart="@dimen/gapMedium"
+                        android:textSize="27sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvPickUpDate"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="10:00" />
+
+                    <TextView
+                        android:id="@+id/tvPickUpDayOfWeek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/gapXSmall"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tvPickUpDate"
+                        app:layout_constraintTop_toBottomOf="@id/tvPickUpDate"
+                        tools:text="Пятница" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/gapSmall"
+                    android:layout_marginBottom="-34dp"
+                    android:src="@drawable/ic_arrow_down"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium"
+                    android:text="@string/dropOff_date"
+                    android:textColor="?attr/color_text_extra"
+                    android:textSize="13sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/Border"
+                    android:id="@+id/layoutDropOffDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapSmall"
+                    android:padding="@dimen/gapSmall">
+
+                    <TextView
+                        android:id="@+id/tvDropOffDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapXSmall"
+                        android:layout_marginTop="@dimen/gapMedium"
+                        android:layout_marginEnd="@dimen/gapSmall"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="23sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/tvDropOffTime"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="05 января 2021" />
+
+                    <TextView
+                        android:id="@+id/tvDropOffTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/gapXSmall"
+                        android:paddingTop="@dimen/gapMedium"
+                        android:paddingBottom="@dimen/gapMedium"
+                        android:paddingStart="@dimen/gapMedium"
+                        android:textSize="27sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tvDropOffDate"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="10:00" />
+
+                    <TextView
+                        android:id="@+id/tvDropOffDayOfWeek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/gapXSmall"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tvDropOffDate"
+                        app:layout_constraintTop_toBottomOf="@id/tvDropOffDate"
+                        tools:text="Вторник" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNext"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/gapMedium"
+                android:enabled="false"
+                android:text="@string/next" />
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>
