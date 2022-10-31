@@ -27,7 +27,8 @@ class CarConverter {
         remote.car_info.car_url_transparent,
         remote.on_request,
         remote.extras.map { extraToModel(it, currency) },
-        remote.fees.map { feeToModel(it, currency) }
+        remote.fees.map { feeToModel(it, currency) },
+        remote.car_info.ev
     )
 
     private fun extraToModel(remote: ExtraDTO, currency: String) = Extra(

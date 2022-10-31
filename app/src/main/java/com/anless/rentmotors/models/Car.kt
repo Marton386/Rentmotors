@@ -19,5 +19,6 @@ class Car(
     val urlImg: String,
     val onRequest: Boolean,
     val extras: List<Extra>,
-    val fees: List<Fee>
+    val fees: List<Fee>,
+    val ev: Int
 )

@@ -18,6 +18,7 @@
         <item name="color_borders">@color/gray_extra_light_dark</item>
         <item name="color_toolbar">@color/toolbar_color_dark</item>
         <item name="color_text_extra">@color/gray_extra_light</item>
+        <item name="color_text_electric">@color/electricGreen</item>
         <item name="color_text_primary">@color/white</item>
         <item name="color_text_link">@color/link_color</item>
 

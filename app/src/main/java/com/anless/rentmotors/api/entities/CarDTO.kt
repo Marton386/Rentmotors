@@ -20,6 +20,7 @@ data class CarDTO(
         val bag_big: Int,
         val car_name: String,
         val car_url_transparent: String,
-        val deposit: Double
+        val deposit: Double,
+        val ev: Int
     )
 }

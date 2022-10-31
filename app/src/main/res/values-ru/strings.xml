@@ -12,6 +12,7 @@
     <string name="pickup_date">Дата получения</string>
     <string name="dropOff_date">Дата возврата</string>
     <string name="per_day">в сутки</string>
+    <string name="electric"><b><i>Electric⚡️</i></b></string>
     <string name="rub">руб</string>
     <string name="deposit">депозит</string>
     <string name="or_similar">или аналогичный</string>

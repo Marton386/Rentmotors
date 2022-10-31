@@ -85,6 +85,15 @@
             android:textColor="?attr/color_text_extra"
             android:textSize="13sp" />
 
+        <ImageView
+            android:id="@+id/electricImg"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/ic_electric"
+            app:tint="?attr/color_text_extra"
+            android:contentDescription="@string/base" />
+
     </LinearLayout>
 
     <ImageView
@@ -120,6 +129,7 @@
         android:layout_marginBottom="32dp"/>
 
     <TextView
+        android:id="@+id/perDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/gapXSmall"
@@ -203,6 +213,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
+        android:id="@+id/similarText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/or_similar"
@@ -210,5 +221,16 @@
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@id/tvDeposit"/>
+
+    <TextView
+        android:id="@+id/isElectric"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gapXSmall"
+        android:text="@string/electric"
+        android:textColor="?attr/color_text_electric"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvDeposit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

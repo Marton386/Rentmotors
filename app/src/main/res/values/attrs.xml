@@ -3,6 +3,7 @@
     <attr name="color_borders" format="reference" />
     <attr name="color_toolbar" format="reference" />
     <attr name="color_text_extra" format="reference" />
+    <attr name="color_text_electric" format="reference" />
     <attr name="color_text_primary" format="reference" />
     <attr name="color_text_link" format="reference" />
 </resources>

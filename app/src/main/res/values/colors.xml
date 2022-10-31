@@ -10,6 +10,7 @@
 
     <color name="orange">#F57F17</color>
     <color name="green">#388E3C</color>
+    <color name="electricGreen">#1F7E24</color>
     <color name="red">#B71C1C</color>
     <color name="orange_dark">#D36200</color>
     <color name="gray">#404040</color>  <!--main text color-->

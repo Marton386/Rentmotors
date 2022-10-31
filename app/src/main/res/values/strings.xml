@@ -13,6 +13,7 @@
     <string name="pickup_date">Pick up date</string>
     <string name="dropOff_date">Drop off date</string>
     <string name="per_day">per day</string>
+    <string name="electric"><b><i>Electric⚡️</i></b></string>
     <string name="rub">RUB</string>
     <string name="deposit">deposit</string>
     <string name="or_similar">or similar</string>

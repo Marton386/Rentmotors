@@ -78,4 +78,7 @@ dependencies {
     implementation 'org.osmdroid:osmdroid-android:6.1.14'
 
     implementation 'com.karumi:dexter:6.2.3'
+
+    
+    implementation 'com.beust:klaxon:5.5'
 }

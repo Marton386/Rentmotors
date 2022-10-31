@@ -43,13 +43,18 @@
         <entry key="..\:/WORK/RentMotors/app/RentmotorsApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22864583333333333" />
         <entry key="..\:/WORK/RentMotors/app/RentmotorsApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22864583333333333" />
         <entry key="..\:/WORK/RentMotors/app/RentmotorsApp/app/src/main/res/xml/filepaths.xml" value="0.2125" />
+        <entry key="app/src/main/res/drawable/ic_electric.xml" value="0.153" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_booking_details.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_check_client.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_finish_booking.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/fragment_personal_info.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_personal_info.xml" value="0.32204437255859375" />
         <entry key="app/src/main/res/layout/fragment_search_station.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_start_booking.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_station_info.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/fragment_stations_map.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_car.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/item_electric_car.xml" value="0.28228403727213547" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.33567352294921876" />
         <entry key="app/src/main/res/menu/station_list_menu.xml" value="0.3098958333333333" />
       </map>

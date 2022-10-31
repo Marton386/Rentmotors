@@ -46,7 +46,13 @@ class CarViewHolder private constructor(
     fun bind(car: Car) {
         item = car
         val context = itemView.context
-
+        if (car.ev == 0) {
+            binding.electricImg.visibility = View.INVISIBLE
+            binding.isElectric.visibility = View.INVISIBLE
+        }
+        else {
+            binding.similarText.visibility = View.INVISIBLE
+        }
         binding.tvCarModel.text = car.model
         binding.tvAllDayCost.text = PriceFormatter.format(car.price)
         binding.tvPerDayCost.text = "${PriceFormatter.format(car.perDayPrice)} ${car.currency}"
