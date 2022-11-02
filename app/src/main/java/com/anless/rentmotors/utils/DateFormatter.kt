@@ -36,8 +36,8 @@ object DateFormatter {
     fun formatDocumentsDateToServer(date: Calendar?): String {
         return if (date != null) {
             var dateString = date.get(Calendar.YEAR).toString()
-            dateString += String.format("%02d", date.get(Calendar.MONTH))
-            dateString += String.format("%02d", date.get(Calendar.DAY_OF_MONTH))
+            dateString += String.format(".%02d", date.get(Calendar.MONTH))
+            dateString += String.format(".%02d", date.get(Calendar.DAY_OF_MONTH))
             dateString
         } else {
             ""
