@@ -73,6 +73,14 @@
     </fragment>
 
     <fragment
+        android:id="@+id/searchOrgFragment"
+        android:name="com.anless.rentmotors.ui.searchOrg.SearchOrgFragment"
+        android:label="@string/org"
+        tools:layout="@layout/fragment_search_org">
+    </fragment>
+
+
+    <fragment
         android:id="@+id/bookingDetailsFragment"
         android:name="com.anless.rentmotors.ui.bookingDetails.BookingDetailsFragment"
         android:label="@string/booking"
@@ -131,6 +139,10 @@
         <action
             android:id="@+id/action_checkClientFragment_to_personalInfoFragment"
             app:destination="@id/personalInfoFragment" />
+
+        <action
+            android:id="@+id/action_checkClientFragment_to_searchOrgFragment"
+            app:destination="@+id/searchOrgFragment"/>
     </fragment>
 
 </navigation>

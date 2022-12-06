@@ -31,6 +31,8 @@ class CheckClientViewModel @Inject constructor(
     val personalInfoReadyEvent = SingleLiveEvent<PersonalInfo>()
     val showErrorEvent = SingleLiveEvent<Int>()
 
+    val orgCheck = MutableLiveData(false)
+
     val isNewClientEvent = SingleLiveEvent<PersonalInfo>()
     val isLoading = MutableLiveData(false)
     val error = SingleLiveEvent<Int>()
@@ -52,14 +54,13 @@ class CheckClientViewModel @Inject constructor(
 
     fun checkClient(personalInfo: PersonalInfo){
         isLoading.postValue(true)
-
         checkClientRepository.checkClient(
             personalInfo.last_name,
             personalInfo.email,
             object : ResultCallback<ClientInfoDTO>{
                 override fun onDataResult(data: ClientInfoDTO) {
                     personalInfo.setClientState(data.newClient, data.idClient)
-                    when(data.idClient){
+                    when(data.idClient) {
                         null -> {
                             isLoading.postValue(false)
                             isNewClientEvent.postValue(personalInfo)
@@ -67,30 +68,26 @@ class CheckClientViewModel @Inject constructor(
                         else -> personalInfoReadyEvent.postValue(personalInfo)
                     }
                 }
-
                 override fun onError(code: Int) {
                     error.postValue(ErrorCodes.getMessageByCode(code))
                     isLoading.postValue(false)
                 }
-            })
+            }
+        )
     }
 
     private fun validateForm(): Boolean {
         var isValid = true
         hideErrors()
-
         if (!validateFirstName()) {
             isValid = false
         }
-
         if (!validateLastName()) {
             isValid = false
         }
-
         if (!validateEmail()) {
             isValid = false
         }
-
         return isValid
     }
 
@@ -98,7 +95,6 @@ class CheckClientViewModel @Inject constructor(
         firstNameError.postValue(null)
         lastNameError.postValue(null)
         emailError.postValue(null)
-
     }
 
     private fun validateFirstName(): Boolean {
@@ -106,7 +102,6 @@ class CheckClientViewModel @Inject constructor(
             firstNameError.postValue(R.string.required_field)
             return false
         }
-
         return true
     }
 
@@ -115,24 +110,19 @@ class CheckClientViewModel @Inject constructor(
             lastNameError.postValue(R.string.required_field)
             return false
         }
-
         return true
     }
 
     private fun validateEmail(): Boolean {
         val emailValue = email.value
-
         if (emailValue.isNullOrEmpty()) {
             emailError.postValue(R.string.required_field)
             return false
         }
-
         if (!Patterns.EMAIL_ADDRESS.matcher(emailValue).matches()) {
             emailError.postValue(R.string.wrong_email_format)
             return false
         }
-
         return true
     }
-
 }

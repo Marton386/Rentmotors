@@ -212,8 +212,59 @@
                         android:textSize="15sp"
                         app:layout_constraintStart_toStartOf="@id/tvRentTerms"
                         app:layout_constraintTop_toBottomOf="@id/tvRentTerms" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapMedium">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/cbAcceptOrg"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:checked="@={viewModel.orgCheck}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvAcceptOrg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/org_payment"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="@id/cbAcceptOrg"
+                        app:layout_constraintStart_toEndOf="@id/cbAcceptOrg"
+                        app:layout_constraintTop_toTopOf="@id/cbAcceptOrg"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutOrg"
+                    style="@style/Border"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gapSmall"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/gapSmall">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_search"
+                        app:tint="?attr/color_borders"
+                        android:contentDescription="@string/app_name" />
+
+                    <TextView
+                        android:id="@+id/tvOrganization"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/gapSmall"
+                        android:layout_marginEnd="@dimen/gapSmall"
+                        android:layout_weight="1"
+                        android:hint="@string/enter_organisation_name"
+                        android:textColorHint="?attr/color_borders" />
+                </LinearLayout>
 
                 <ProgressBar
                     android:id="@+id/pbLoading"

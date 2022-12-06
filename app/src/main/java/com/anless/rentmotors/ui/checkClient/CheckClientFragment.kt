@@ -14,9 +14,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.anless.rentmotors.ui.startBooking.BookingViewModel
 import com.anless.rentmotors.databinding.FragmentCheckClientBinding
+import com.anless.rentmotors.models.StationType
+import com.anless.rentmotors.ui.startBooking.StartBookingFragmentDirections
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class CheckClientFragment : Fragment() {
@@ -38,7 +42,21 @@ class CheckClientFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.btnNext.setOnClickListener {
-            viewModel.prepareData()
+            if ((viewModel.orgCheck.value == true && binding.tvOrganization.text != "") ||
+                viewModel.orgCheck.value != true) {
+                viewModel.prepareData()
+            } else {
+                if (viewModel.orgCheck.value == true) {
+                    val alertDialogBuilder = AlertDialog.Builder(requireContext())
+                        .setView(R.layout.dialog_message)
+                    val dialog = alertDialogBuilder.show()
+                    dialog.findViewById<TextView>(R.id.tvMessage).text = requireContext()
+                        .getString(R.string.choose_org)
+                    dialog.findViewById<Button>(R.id.btnOk).setOnClickListener {
+                        dialog.dismiss()
+                    }
+                }
+            }
         }
 
         binding.tvRentTerms.setOnClickListener {
@@ -49,10 +67,33 @@ class CheckClientFragment : Fragment() {
             openLink(getString(R.string.privacy_policy_link))
         }
 
+        binding.layoutOrg.setOnClickListener {
+            toSearchOrgFragment()
+        }
+
         subscribeUi()
     }
 
     private fun subscribeUi() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            bookingViewModel.organization.collectLatest {
+                if (it == null) {
+                    binding.tvOrganization.text = ""
+                } else {
+                    binding.tvOrganization.text = it.value
+                }
+            }
+        }
+
+        viewModel.orgCheck.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.layoutOrg.visibility = View.VISIBLE
+            } else {
+                binding.layoutOrg.visibility = View.GONE
+            }
+            bookingViewModel.setOrgCheck(it)
+        }
+
         viewModel.showErrorEvent.observe(viewLifecycleOwner) {
             showError(it)
         }
@@ -63,12 +104,14 @@ class CheckClientFragment : Fragment() {
 
         viewModel.isNewClientEvent.observe(viewLifecycleOwner) {
             bookingViewModel.setPersonalInfo(it)
-            val action = CheckClientFragmentDirections.actionCheckClientFragmentToPersonalInfoFragment()
+            val action = CheckClientFragmentDirections
+                .actionCheckClientFragmentToPersonalInfoFragment()
             findNavController().navigate(action)
         }
 
         bookingViewModel.bookHasCreatedEvent.observe(viewLifecycleOwner) {
-            val action = CheckClientFragmentDirections.actionCheckClientFragmentToFinishBookingFragment()
+            val action = CheckClientFragmentDirections
+                .actionCheckClientFragmentToFinishBookingFragment()
             findNavController().navigate(action)
         }
 
@@ -86,6 +129,11 @@ class CheckClientFragment : Fragment() {
                 binding.btnNext.isEnabled = !it
             }
         }
+    }
+
+    private fun toSearchOrgFragment() {
+        val action = CheckClientFragmentDirections.actionCheckClientFragmentToSearchOrgFragment()
+        findNavController().navigate(action)
     }
 
     private fun openLink(link: String) {

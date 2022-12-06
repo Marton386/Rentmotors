@@ -9,10 +9,12 @@ import androidx.lifecycle.ViewModel
 import com.anless.rentmotors.models.*
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.viewModelScope
 import com.anless.rentmotors.api.ErrorCodes
 import com.anless.rentmotors.api.ResultCallback
 import com.anless.rentmotors.utils.DateFormatter
 import com.anless.rentmotors.api.entities.BookDTO
+import com.anless.rentmotors.api.requests.BookingOrgRequest
 import com.anless.rentmotors.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import com.anless.rentmotors.api.requests.BookingRequest
@@ -21,6 +23,9 @@ import com.anless.rentmotors.ui.personalInfo.PersonalInfo
 import com.anless.rentmotors.ui.searchCars.SearchCarFilter
 import com.anless.rentmotors.repositories.StationRepository
 import com.anless.rentmotors.repositories.VoucherRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class BookingViewModel @Inject constructor(
@@ -55,6 +60,11 @@ class BookingViewModel @Inject constructor(
     val isLoading = MutableLiveData<Boolean>()
     val voucher = MutableLiveData<File>()
     private lateinit var clientEmail: String
+
+    private var orgCheck = false
+
+    private val _organization = MutableStateFlow<Suggestion?>(value = null)
+    val organization = _organization.asStateFlow()
 
     init {
         //initStationPickUp()
@@ -110,6 +120,16 @@ class BookingViewModel @Inject constructor(
         rentalDateString.addSource(dateTo) {
             rentalDateString.postValue(getRentalDateString())
         }
+    }
+
+    fun setOrganization(org: Suggestion) {
+        viewModelScope.launch {
+            _organization.emit(org)
+        }
+    }
+
+    fun setOrgCheck(checked: Boolean) {
+        this.orgCheck = checked
     }
 
     private fun getSearchCarFilter(): SearchCarFilter? {
@@ -380,31 +400,68 @@ class BookingViewModel @Inject constructor(
             )
         }
 
-        val bookingRequest = BookingRequest(
-            carId,
-            clientInfo,
-            passport,
-            driverLicense,
-            extras ?: listOf(),
-            personalInfo.flight_number,
-            personalInfo.comments,
-            personalInfo.newClient ?: ClientState.NEW_CLIENT
-        )
+        if (organization.value == null) {
+            val bookingRequest = BookingRequest(
+                carId,
+                clientInfo,
+                passport,
+                driverLicense,
+                extras ?: listOf(),
+                personalInfo.flight_number,
+                personalInfo.comments,
+                personalInfo.newClient ?: ClientState.NEW_CLIENT
+            )
+            isLoading.postValue(true)
+            bookRepository.book(bookingRequest, object : ResultCallback<BookDTO> {
+                override fun onDataResult(data: BookDTO) {
+                    book.postValue(data)
+                    isLoading.postValue(false)
+                    bookHasCreatedEvent.call()
+                }
 
-        isLoading.postValue(true)
+                override fun onError(code: Int) {
+                    error.postValue(ErrorCodes.getMessageByCode(code))
+                    isLoading.postValue(false)
+                }
+            })
+        } else {
+            val bookingOrgRequest = BookingOrgRequest(
+                carId,
+                clientInfo,
+                passport,
+                driverLicense,
+                extras ?: listOf(),
+                personalInfo.flight_number,
+                personalInfo.comments,
+                personalInfo.newClient ?: ClientState.NEW_CLIENT,
+                BookingOrgRequest.EntityInfo(
+                    organization.value!!.data.name.fullWithOpf,
+                    organization.value!!.data.name.shortWithOpf,
+                    organization.value!!.data.inn,
+                    organization.value!!.data.ogrn,
+                    organization.value!!.data.kpp,
+                    "",
+                    "",
+                    organization.value!!.data.management!!.name,
+                    organization.value!!.data.management!!.post,
+                    organization.value!!.data.address.value,
+                    ""
+                )
+            )
+            isLoading.postValue(true)
+            bookRepository.orgBook(bookingOrgRequest, object : ResultCallback<BookDTO> {
+                override fun onDataResult(data: BookDTO) {
+                    book.postValue(data)
+                    isLoading.postValue(false)
+                    bookHasCreatedEvent.call()
+                }
 
-        bookRepository.book(bookingRequest, object : ResultCallback<BookDTO> {
-            override fun onDataResult(data: BookDTO) {
-                book.postValue(data)
-                isLoading.postValue(false)
-                bookHasCreatedEvent.call()
-            }
-
-            override fun onError(code: Int) {
-                error.postValue(ErrorCodes.getMessageByCode(code))
-                isLoading.postValue(false)
-            }
-        })
+                override fun onError(code: Int) {
+                    error.postValue(ErrorCodes.getMessageByCode(code))
+                    isLoading.postValue(false)
+                }
+            })
+        }
     }
 
     private fun getRentalDateString(): String {

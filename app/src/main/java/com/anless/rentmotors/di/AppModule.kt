@@ -11,6 +11,7 @@ import dagger.hilt.components.SingletonComponent
 import com.anless.rentmotors.helpers.SettingsHelper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import com.anless.rentmotors.models.converters.CarConverter
+import com.anless.rentmotors.models.converters.OrgConverter
 import com.anless.rentmotors.models.converters.StationConverter
 
 @Module
@@ -27,9 +28,20 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideOrgConverter() = OrgConverter()
+
+    @Provides
+    @Singleton
     fun provideStationsRepository(stationConverter: StationConverter): StationRepository {
         val stationAPI = ServiceGenerator.createService(StationAPI::class.java)
         return StationRepository(stationAPI, stationConverter)
+    }
+
+    @Provides
+    @Singleton
+    fun provideOrgRepository(orgConverter: OrgConverter): OrgRepository {
+        val orgAPI = ServiceOrgGenerator.createService(OrgAPI::class.java)
+        return OrgRepository(orgAPI, orgConverter)
     }
 
     @Provides
@@ -55,7 +67,6 @@ object AppModule {
     @Singleton
     fun provideVoucherRepository(@ApplicationContext context: Context): VoucherRepository {
         val voucherAPI = ServiceGenerator.createService(VoucherAPI::class.java)
-
         return VoucherRepository(voucherAPI, context.cacheDir)
     }
 
